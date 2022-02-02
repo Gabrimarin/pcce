@@ -23,7 +23,7 @@ function ReportRegister() {
 
   return (
     <Box>
-      <HeaderTitle>TODO Ocorrência</HeaderTitle>
+      <HeaderTitle>Registro Boletim Ocorrência</HeaderTitle>
       <OriginSelector
         onChange={handleChangeOrigin}
         origins={forms}

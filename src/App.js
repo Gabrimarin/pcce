@@ -1,10 +1,12 @@
-import { Box } from "@mui/material";
+import { Alert, Box, Collapse } from "@mui/material";
 import { useState } from "react";
 import Drawer from "./components/Drawer";
 import { DRAWER_WIDTH } from "./styles/theme";
 import ReportRegister from "./pages/ReportRegister";
 import Header from "./components/Header";
 import Reports from "./pages/Reports";
+import { useDispatch, useSelector } from "react-redux";
+import { closeSnack } from "./store/slices/snackbar";
 const getNavigationItem = (id, icon, component) => ({
   id,
   icon,
@@ -25,7 +27,8 @@ const navigationItems = [
 
 function App() {
   const [selected, setSelected] = useState(navigationItems[0].id);
-
+  const dispatch = useDispatch();
+  const { open } = useSelector((state) => state.snackbar);
   const handleClickItem = (id) => {
     setSelected(id);
   };
@@ -43,6 +46,18 @@ function App() {
           {navigationItems.find((item) => item.id === selected).component}
         </Box>
       </Box>
+      <Collapse
+        in={open}
+        style={{ position: "absolute", bottom: 10, right: 10 }}
+      >
+        <Alert
+          variant="filled"
+          severity={"success"}
+          onClose={dispatch(closeSnack())}
+        >
+          {"Sucesso!"}
+        </Alert>
+      </Collapse>
     </Box>
   );
 }

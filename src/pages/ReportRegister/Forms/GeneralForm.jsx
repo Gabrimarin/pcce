@@ -29,13 +29,12 @@ function GeneralForm({ id }) {
     };
   });
 
-  function handleChangeFile() {
-    const dataForm = new FormData();
-    dataForm.append("file", filesElement.current.files[0]);
-    setLocalState({ ...localState, file: dataForm });
+  function handleChangeFile(e) {
+    setLocalState((prev) => ({ ...prev, file: e.currentTarget.files[0] }));
   }
 
   const handleChange = (e) => {
+    console.log(2)
     const value = e.target.value;
     const name = e.target.name;
     setLocalState({ ...localState, [name]: value });
@@ -43,9 +42,10 @@ function GeneralForm({ id }) {
 
   async function addFriend() {
     try {
-      await db.reports.add({ ...initialState, origin: id });
+      await db.reports.add({ ...localState, origin: id });
+      alert("Ocorrência adicionada com sucesso!");
     } catch (error) {
-      // setStatus(`Failed to add ${name}: ${error}`);
+      console.log(error);
     }
   }
 
@@ -124,7 +124,7 @@ function GeneralForm({ id }) {
         {id !== "narrative" && (
           <FormRow>
             <Button variant="outlined" component="label">
-              Upload File
+              Enviar Arquivo
               <input
                 type="file"
                 ref={filesElement}
@@ -137,13 +137,12 @@ function GeneralForm({ id }) {
             <div>
               {localState["file"] && (
                 <Typography sx={{ ml: 2 }}>
-                  {localState["file"].get("file").name}
+                  {localState?.["file"]?.name || "Nenhum arquivo selecionado"}
                 </Typography>
               )}
             </div>
           </FormRow>
         )}
-        {/* <a href={localState[input]} target='_blank' rel='noopener noreferrer'></a> */}
         <Button variant="contained" onClick={handleSubmit}>
           Enviar
         </Button>

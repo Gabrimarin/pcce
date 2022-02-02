@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const generalInitialState = {
   officeNumber: "",
   agency: "",
-  startDate: new Date().toISOString(),
+  startDate: null,
   delegate: "",
   policeStation: "",
   file: "",

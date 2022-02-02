@@ -1,7 +1,5 @@
-// create a global axios
 import axios from "axios";
 
-// create a global axios
 const instance = axios.create({
   baseURL: "http://localhost:3001/",
   headers: {

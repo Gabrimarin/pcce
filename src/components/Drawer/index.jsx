@@ -37,7 +37,6 @@ function Drawer({ items, selectedId, onClickItem }) {
           })}
         </List>
       </MUIDrawer>
-
       <Divider orientation="vertical" color="black" />
     </Box>
   );

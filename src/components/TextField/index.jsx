@@ -6,7 +6,6 @@ function TextField({ type = "text", value, onChange, label, placeholder, style =
     <Box sx={[{ display: "flex", alignItems: "center" }, { ...style }]}>
       <FormLabel>{label}</FormLabel>
       <MUITextField
-
         value={value}
         type={type}
         placeholder={placeholder}

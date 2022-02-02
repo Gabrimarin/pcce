@@ -3,8 +3,6 @@ import { createTheme } from "@mui/material";
 export const DRAWER_WIDTH = 60;
 export const HEADER_HEIGHT = 60;
 
-
-// a mui style object
 const theme = createTheme({
   palette: {
     primary: {
@@ -14,8 +12,7 @@ const theme = createTheme({
       main: '#777',
     },
     text: {
-      primary: '#7a7',
-      // secondary: 'red',
+      // primary: '#7a7',
     },
     
   },

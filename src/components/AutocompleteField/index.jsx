@@ -2,6 +2,7 @@ import { Autocomplete, CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import TextField from "../TextField";
 import httpClient from "../../http";
+import PropTypes from "prop-types";
 
 function AutocompleteField({ label, endpoint, value, onChange, ...props }) {
   const [options, setOptions] = useState([]);
@@ -77,5 +78,12 @@ function AutocompleteField({ label, endpoint, value, onChange, ...props }) {
     />
   );
 }
+
+AutocompleteField.propTypes = {
+  label: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
+  value: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default AutocompleteField;

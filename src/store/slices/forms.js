@@ -6,7 +6,7 @@ const generalInitialState = {
   startDate: new Date().toISOString(),
   delegate: "",
   policeStation: "",
-  input: "",
+  file: "",
 };
 
 export const formsSlice = createSlice({

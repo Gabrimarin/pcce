@@ -1,13 +1,14 @@
-import { Box, Button, FormControl } from "@mui/material";
+import { Box, Button, FormControl, Typography } from "@mui/material";
 import TextField from "../../../components/TextField";
 import { LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DateField from "../../../components/DateField";
 import ptBR from "date-fns/locale/pt-BR";
 import AutocompleteField from "../../../components/AutocompleteField";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setForm } from "../../../store/slices/forms";
+import { db } from "../../../data/db";
 
 const FormRow = ({ children }) => (
   <Box display="flex" flexDirection="row" mb={2} alignItems="center">
@@ -20,6 +21,7 @@ function GeneralForm({ id }) {
   const { forms } = useSelector((state) => state.forms);
   const initialState = forms[id].state || {};
   const [localState, setLocalState] = useState(initialState);
+  const filesElement = useRef(null);
 
   useEffect(() => {
     return () => {
@@ -27,16 +29,36 @@ function GeneralForm({ id }) {
     };
   });
 
+  function handleChangeFile() {
+    const dataForm = new FormData();
+    dataForm.append("file", filesElement.current.files[0]);
+    setLocalState({ ...localState, file: dataForm });
+  }
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setLocalState({ ...localState, [name]: value });
   };
 
+  async function addFriend() {
+    try {
+      await db.reports.add({ ...initialState, origin: id });
+    } catch (error) {
+      // setStatus(`Failed to add ${name}: ${error}`);
+    }
+  }
+
+  function handleSubmit() {
+    addFriend();
+    dispatch(setForm({ form: id, data: {} }));
+    setLocalState({});
+  }
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} locale={ptBR}>
-      <FormControl>
-        {id === 'office' && (
+      <FormControl onSubmit={handleSubmit}>
+        {id === "office" && (
           <FormRow>
             <TextField
               value={localState["officeNumber"]}
@@ -99,27 +121,32 @@ function GeneralForm({ id }) {
             value={localState["policeStation"]}
           />
         </FormRow>
-        {id !== 'narrative' && (
+        {id !== "narrative" && (
           <FormRow>
             <Button variant="outlined" component="label">
               Upload File
               <input
                 type="file"
+                ref={filesElement}
                 hidden
+                multiple
                 name="input"
-                onChange={(event) => {
-                  console.log(event.currentTarget.files[0])
-                  setLocalState((prev) => ({
-                    ...prev,
-                    [event.target.name]: event.currentTarget.files[0],
-                  }));
-                }}
+                onChange={handleChangeFile}
               />
             </Button>
+            <div>
+              {localState["file"] && (
+                <Typography sx={{ ml: 2 }}>
+                  {localState["file"].get("file").name}
+                </Typography>
+              )}
+            </div>
           </FormRow>
         )}
         {/* <a href={localState[input]} target='_blank' rel='noopener noreferrer'></a> */}
-        <Button type="submit" variant="contained">Enviar</Button>
+        <Button variant="contained" onClick={handleSubmit}>
+          Enviar
+        </Button>
       </FormControl>
     </LocalizationProvider>
   );

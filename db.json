@@ -1,0 +1,147 @@
+{
+  "police_chiefs": [
+    {
+      "id": 1,
+      "name": "John Lennon"
+    },
+    {
+      "id": 2,
+      "name": "Paul McCartney"
+    },
+    {
+      "id": 3,
+      "name": "George Harrison"
+    },
+    {
+      "id": 4,
+      "name": "Ringo Starr"
+    },
+    {
+      "id": 5,
+      "name": "Elton John"
+    },
+    {
+      "id": 6,
+      "name": "John Bon Jovi"
+    },
+    {
+      "id": 7,
+      "name": "John Doe"
+    },
+    {
+      "id": 8,
+      "name": "George Michael"
+    },
+    {
+      "id": 9,
+      "name": "Jimi Hendrix"
+    }
+  ],
+
+  "police_stations": [
+    {
+      "id": 1,
+      "name": "New York"
+    },
+    {
+      "id": 2,
+      "name": "Los Angeles"
+    },
+    {
+      "id": 3,
+      "name": "Chicago"
+    },
+    {
+      "id": 4,
+      "name": "Houston"
+    },
+    {
+      "id": 5,
+      "name": "Philadelphia"
+    },
+    {
+      "id": 6,
+      "name": "Phoenix"
+    },
+    {
+      "id": 7,
+      "name": "San Antonio"
+    },
+    {
+      "id": 8,
+      "name": "San Diego"
+    },
+    {
+      "id": 9,
+      "name": "Dallas"
+    },
+    {
+      "id": 10,
+      "name": "San Jose"
+    },
+    {
+      "id": 11,
+      "name": "Austin"
+    },
+    {
+      "id": 12,
+      "name": "Jacksonville"
+    },
+    {
+      "id": 13,
+      "name": "San Francisco"
+    },
+    {
+      "id": 14,
+      "name": "Columbus"
+    },
+    {
+      "id": 15,
+      "name": "Indianapolis"
+    },
+    {
+      "id": 16,
+      "name": "Fort Worth"
+    },
+    {
+      "id": 17,
+      "name": "Charlotte"
+    },
+    {
+      "id": 18,
+      "name": "Detroit"
+    },
+    {
+      "id": 19,
+      "name": "El Paso"
+    },
+    {
+      "id": 20,
+      "name": "Memphis"
+    },
+    {
+      "id": 21,
+      "name": "Boston"
+    },
+    {
+      "id": 22,
+      "name": "Seattle"
+    },
+    {
+      "id": 23,
+      "name": "Denver"
+    },
+    {
+      "id": 24,
+      "name": "Washington"
+    },
+    {
+      "id": 25,
+      "name": "Nashville"
+    },
+    {
+      "id": 26,
+      "name": "Louisville"
+    }
+  ]
+}

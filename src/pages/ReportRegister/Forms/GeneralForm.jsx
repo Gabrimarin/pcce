@@ -124,7 +124,7 @@ function GeneralForm({ id }) {
         {id !== "narrative" && (
           <FormRow>
             <Button variant="outlined" component="label">
-              Enviar Arquivo
+              Selecionar Arquivo
               <input
                 type="file"
                 ref={filesElement}
@@ -143,7 +143,7 @@ function GeneralForm({ id }) {
             </div>
           </FormRow>
         )}
-        <Button variant="contained" onClick={handleSubmit}>
+        <Button variant="contained" sx={{ width: 100 }} onClick={handleSubmit}>
           Enviar
         </Button>
       </FormControl>

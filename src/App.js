@@ -3,6 +3,7 @@ import { useState } from "react";
 import Drawer from "./components/Drawer";
 import { DRAWER_WIDTH } from "./styles/theme";
 import ReportRegister from "./pages/ReportRegister";
+import Peca from "./pages/Peca";
 import Header from "./components/Header";
 import Reports from "./pages/Reports";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +17,7 @@ const getNavigationItem = (id, icon, component) => ({
 const navigationItems = [
   getNavigationItem("menu1", "menu_book", <ReportRegister />),
   getNavigationItem("menu2", "face", <Reports />),
-  getNavigationItem("menu3", "map"),
+  getNavigationItem("menu3", "map", <Peca />),
   getNavigationItem("menu4", "category"),
   getNavigationItem("menu5", "balance"),
   getNavigationItem("menu6", "account_tree"),
@@ -42,7 +43,7 @@ function App() {
           onClickItem={handleClickItem}
           selectedId={selected}
         />
-        <Box paddingLeft={5} paddingTop={2}>
+        <Box paddingLeft={5} paddingTop={20}>
           {navigationItems.find((item) => item.id === selected).component}
         </Box>
       </Box>

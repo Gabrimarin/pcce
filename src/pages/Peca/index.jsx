@@ -8,111 +8,575 @@ import General from "../CustomElements/General";
 import ToggleField from "../CustomElements/ToggleField";
 import TextField from "../CustomElements/TextField";
 
-const CSSStringToObject = (styles) => {
-  if (styles) {
-    return styles
-      .split(";")
-      .filter((style) => style.split(":")[0] && style.split(":")[1])
-      .map((style) => [
-        style
-          .split(":")[0]
-          .trim()
-          .replace(/-./g, (c) => c.substr(1).toUpperCase()),
-        style.split(":")[1].trim(),
-      ])
-      .reduce(
-        (styleObj, style) => ({
-          ...styleObj,
-          [style[0]]: style[1],
-        }),
-        {}
-      );
-  }
-};
-
-const newTemplate = {
+const json = {
   type: "template",
-  id: "1",
+  style: "padding: 100px;",
   children: [
     {
-      type: "paragrafo",
-      id: "2",
+      type: "p",
       children: [
         {
-          type: "texto",
-          value: '<strong style="font-size: 24px;">ALVARÁ DE SOLTURA</strong>',
-          id: "3",
+          type: "span",
+          children: [
+            {
+              type: "span",
+              value: "<strong>NOTA DE CULPA</strong>",
+            },
+          ],
+          style: "font-size:22px;",
         },
       ],
-      style: "text-align:center;font-size: 24px;",
+      style: "text-align:center;",
     },
     {
-      type: "paragrafo",
-      id: "4",
-      style: "font-size: 24px;text-align:center;",
+      type: "p",
       children: [
         {
-          type: "texto",
-          value: "<strong>BO Nº 3/2022 </strong>",
-          id: "5",
+          type: "span",
+          children: [
+            {
+              type: "span",
+              value: "<strong></strong>",
+            },
+            {
+              type: "highlight",
+              value: "BO",
+            },
+          ],
+          style: "font-size:19px;",
         },
         {
-          type: "campo-preencher",
-          label: "numerodoprocedimento",
-          id: "6",
-          style: "font-size: 24px;text-align:center;",
-        },
-        {
-          type: "texto",
+          type: "span",
           value: " ",
-          id: "200",
         },
-
         {
-          type: "texto",
+          type: "span",
           value: " ",
-          id: "200",
+        },
+      ],
+      style: "text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          children: [
+            {
+              type: "span",
+              value: "<strong> Nº </strong>",
+            },
+            {
+              type: "highlight",
+              value: "3",
+            },
+            {
+              type: "span",
+              value: "/",
+            },
+            {
+              type: "highlight",
+              value: "2022",
+            },
+          ],
+          style: "font-size:19px;",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          children: [
+            {
+              type: "span",
+              value: "O(A) Sr(a) <strong></strong>",
+            },
+            {
+              type: "text-field",
+              label: "delegado",
+              value: "João Eduardo Santana Davanço",
+              id: "delegado",
+            },
+            {
+              type: "span",
+              value:
+                ", Delegado(a) de Polícia desta Unidade Policial, faz saber ao(a) <strong>CONDUZIDO(A): </strong> ",
+            },
+            {
+              type: "toggle-text",
+              value: "Desconhecido 1, Nacionalidade: Brasil",
+              id: "1",
+            },
+            {
+              type: "span",
+              value: ".",
+            },
+            {
+              type: "span",
+              value: " Neste ato por seu(ua) advogado(a), Sr(a) ",
+            },
+            {
+              type: "text-field",
+              label: "advogado",
+              value: "",
+              id: "advogado",
+            },
+            {
+              type: "span",
+              value:
+                ", que se encontra <strong>PRESO(A) </strong> <strong>EM  FLAGRANTE</strong> nos autos em epígrafe, pela prática da Infração Penal prevista no: <strong></strong>",
+            },
+            {
+              type: "toggle-text",
+              value: "FURTO ART. 155 CAPUT DO CPB",
+              id: "2",
+            },
+            {
+              type: "span",
+              value: ", ocorrida em <strong></strong>",
+            },
+            {
+              type: "toggle-text",
+              value: "23/01/2022",
+              id: "3",
+            },
+            {
+              type: "span",
+              value: ", por volta das ",
+            },
+            {
+              type: "toggle-text",
+              value: "10:00",
+              id: "4",
+            },
+            {
+              type: "span",
+              value: "  horas, no local ",
+            },
+            {
+              type: "toggle-text",
+              value: "Rua Danielle Maraisa de Oliveura Mariano, nº 100",
+              id: "5",
+            },
+            {
+              type: "span",
+              value: " Figurando como <strong>CONDUTOR(A): </strong>",
+            },
+            {
+              type: "span",
+              value: ", como TESTEMUNHA(S):  ",
+            },
+            {
+              type: "span",
+              value: " e como VÍTIMA(S): ",
+            },
+            {
+              type: "toggle-text",
+              value: "Joao Figueiredo Pereira",
+              id: "6",
+            },
+          ],
+          style: "font-size:19px;",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:justify;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:justify;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-indent:4em;text-align:justify;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:justify;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          children: [
+            {
+              type: "highlight",
+              value: "ARAPIRACA",
+            },
+            {
+              type: "span",
+              value: "-",
+            },
+            {
+              type: "highlight",
+              value: "AL",
+            },
+            {
+              type: "span",
+              value: ", ",
+            },
+            {
+              type: "highlight",
+              value: "16",
+            },
+            {
+              type: "span",
+              value: " de ",
+            },
+            {
+              type: "highlight",
+              value: "Fevereiro",
+            },
+            {
+              type: "span",
+              value: " de ",
+            },
+            {
+              type: "highlight",
+              value: "2022",
+            },
+          ],
+          style: "font-size:19px;",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:right;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-indent:4em;text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-indent:4em;text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-indent:4em;text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "text-field",
+          label: "delegado",
+          value: "João Eduardo Santana Davanço",
+          id: "delegado2",
+        },
+        {
+          type: "span",
+          value: "<strong></strong>",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: "<strong>Delegado(a) de Polícia</strong>",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:center;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "text-align:justify;",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value:
+            "Recebi uma via desta <strong>NOTA DE CULPA</strong> às  __ _ _:_ _ _ _ _h do dia _ _ _ _/ _ _ _/_ _ ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+        {
+          type: "span",
+          value: " ",
+        },
+      ],
+      style: "",
+    },
+    {
+      type: "p",
+      children: [
+        {
+          type: "span",
+          value: "<strong>PRESO(A):</strong>  ",
         },
         {
           type: "toggle-text",
-          value: "<strong>texto adicional</strong>",
-          style: "font-size: 24px;text-align:center;",
-
+          value: "Desconhecido 1",
           id: "7",
         },
-      ],
-    },
-    {
-      type: "paragrafo",
-      id: "8",
-      children: [
         {
-          type: "texto",
-          value: "O(A) Sr(a) ",
-          id: "9",
+          type: "span",
+          value: " ",
         },
         {
-          type: "campo-preencher",
-          label: "nome do delegado",
-          value: "João Eduardo Santana Davanço",
-          id: "100",
-        },
-        {
-          type: "texto",
-          value: " lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-          id: "10",
+          type: "span",
+          value: " ",
         },
       ],
+      style: "",
     },
   ],
 };
 
-// above to one line string
-const samplehtml = `<template><p><span><strong>ALVARÁ DE SOLTURA</strong></span></p><p><span><strong>BO Nº 3/2022 </strong></span><campo-preencher id="1" style="font-size: 24px;text-align:center;" label="numerodoprocedimento" /><span> </span><span> </span><toggle-text value="texto legal" id="2" style="font-size: 24px;text-align:center;"><strong>span adicional</strong></toggle-text></p><p><span>O(A) Sr(a) </span><campo-preencher label="nome do delegado" value="João Eduardo Santana Davanço" id="3" /><span> lorem ipsum dolor sit amet, consectetur adipiscing elit. </span></p></template>`;
+const jsonToXml = (json) => {
+  let xml = "";
+  const type = json.type;
+  const children = json.children;
+  const style = json?.style;
+  const label = json?.label;
+  const value = json?.value;
+  const id = json?.id;
+  if (json.children) {
+    xml += `<${type}${style ? ` style="${style}"` : ""}>`;
+    children.forEach((child) => {
+      xml += jsonToXml(child);
+    });
+    xml += `</${type}>`;
+  } else if (type === "span") {
+    xml += `<${type}${style ? ` style="${style}"` : ""}>${value}</${type}>`;
+  } else {
+    xml += `<${type}${label ? ` label="${label}"` : ""}${
+      value ? ` value="${value}"` : ""
+    }${style ? ` style="${style}"` : ""} ${id ? ` id="${id}"` : ""}/>`;
+  }
+  return xml;
+};
 
-function Peca({ template = newTemplate }) {
+const xmlToObject = (xml) => {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xml, "text/xml");
+  const xmlObject = xmlDoc.firstChild;
+  return xmlObject;
+};
+const samplehtml = jsonToXml(json);
+
+function Peca({ xmlTemplate = samplehtml }) {
   const [togglesIds, setTogglesIds] = useState({});
   const [fields, setFields] = useState({});
+  const xmlObject = xmlToObject(xmlTemplate);
 
   const findTypeIds = (children, type) => {
     const childNodes = Array.from(children);
@@ -125,28 +589,22 @@ function Peca({ template = newTemplate }) {
       }
       return acc;
     }, []);
-    console.log(items, type)
     return items;
   };
 
   useEffect(() => {
     let aux = {};
-    const xml = xmlToObject(samplehtml);
-    for (const toggle of findTypeIds(xml.childNodes, "toggle-text")) {
+    for (const toggle of findTypeIds(xmlObject.childNodes, "toggle-text")) {
       aux[toggle] = false;
     }
     setTogglesIds(aux);
     aux = {};
-    for (const field of findTypeIds(xml.childNodes, "campo-preencher")) {
+    for (const field of findTypeIds(xmlObject.childNodes, "text-field")) {
       aux[field] = null;
     }
     setFields(aux);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    console.log({ fields, togglesIds });
-  }, [fields, togglesIds]);
 
   function onClickToggle(id) {
     setTogglesIds({
@@ -162,28 +620,46 @@ function Peca({ template = newTemplate }) {
     });
   }
 
-  const xmlToJSX = (template) => {
+  const xmlToJSX = (template, withValues) => {
+    const id = template?.attributes?.id?.value;
+    const value = template?.attributes?.value?.value;
     const childNodes = Array.from(template.childNodes);
     if (template.nodeName === "template" || template.nodeName === "div") {
       return (
         <General Element={Template} attributes={template.attributes}>
-          {childNodes.map((child) => xmlToJSX(child))}
+          {childNodes.map((child) => xmlToJSX(child, withValues))}
+        </General>
+      );
+    } else if (template.nodeName === "highlight") {
+      return (
+        <General
+          Element={"span"}
+          style={{ color: withValues ? "black" : "blue" }}
+          attributes={template.attributes}
+        >
+          {value}
         </General>
       );
     } else if (template.nodeName === "#text") {
       return <span>{template.textContent}</span>;
     } else if (template.nodeName === "toggle-text") {
+      const spanValue = togglesIds[id] ? value : "";
       return (
         <General
+          withValue={withValues}
+          spanValue={spanValue}
           Element={ToggleField}
           attributes={template.attributes}
           onClick={onClickToggle}
           enabled={togglesIds[template?.attributes?.id?.value]}
         />
       );
-    } else if (template.nodeName === "campo-preencher") {
+    } else if (template.nodeName === "text-field") {
+      const spanValue = typeof fields[id] === "string" ? fields[id] : value;
       return (
         <General
+          withValue={withValues}
+          spanValue={spanValue}
           Element={TextField}
           attributes={template.attributes}
           value={
@@ -197,69 +673,10 @@ function Peca({ template = newTemplate }) {
     } else {
       return (
         <General Element={template.tagName} attributes={template.attributes}>
-          {childNodes.map((child) => xmlToJSX(child))}
+          {childNodes.map((child) => xmlToJSX(child, withValues))}
         </General>
       );
     }
-  };
-  const templateToJSXWithValues = (template) => {
-    if (template.type === "template") {
-      return (
-        <div
-          id="print"
-          style={{
-            backgroundColor: "#f5f5f5",
-            width: "210mm",
-            minHeight: "297mm",
-            marginLeft: "auto",
-            marginRight: "auto",
-            padding: "50px",
-          }}
-        >
-          <div style={{}}>
-            {template.children.map((child) => templateToJSXWithValues(child))}
-          </div>
-        </div>
-      );
-    }
-    if (template.type === "paragrafo") {
-      return (
-        <p style={CSSStringToObject(template?.style)}>
-          {template.children.map((child) => templateToJSXWithValues(child))}
-        </p>
-      );
-    }
-    if (template.type === "texto") {
-      return <span dangerouslySetInnerHTML={{ __html: template.value }} />;
-    }
-    if (template.type === "campo-preencher") {
-      return (
-        <span
-          dangerouslySetInnerHTML={{
-            __html:
-              typeof fields[template.id] === "string"
-                ? fields[template.id]
-                : template?.value,
-          }}
-        />
-      );
-    }
-    if (template.type === "toggle-text") {
-      const { value, id } = template;
-      return (
-        <span
-          dangerouslySetInnerHTML={{ __html: togglesIds[id] ? value : "" }}
-        />
-      );
-    }
-    return null;
-  };
-
-  const xmlToObject = (xml) => {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xml, "text/xml");
-    const xmlObject = xmlDoc.firstChild;
-    return xmlObject;
   };
 
   function printDocument() {
@@ -268,18 +685,27 @@ function Peca({ template = newTemplate }) {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
       pdf.addImage(imgData, "JPEG", 0, 0);
-      // pdf.output('dataurlnewwindow');
       pdf.save("download.pdf");
     });
   }
 
   return (
-    <div style={{ width: "60%" }}>
-      {/* <div>{templateToJSX(newTemplate)}</div> */}
-      <div>{xmlToJSX(xmlToObject(samplehtml))}</div>
-      <div style={{ margin: 20 }}></div>
-      {templateToJSXWithValues(newTemplate)}
-      <Button onClick={printDocument}>GERAR</Button>
+    <div style={{ display: "flex" }}>
+      <div>
+        <div
+          style={{ width: "210mm", height: "297mm", backgroundColor: "#ddd" }}
+        >
+          <div>{xmlToJSX(xmlObject)}</div>
+        </div>
+      </div>
+      <Button style={{ margin: 10 }} variant="contained" onClick={printDocument}>
+        GERAR
+      </Button>
+      <div style={{ boxShadow: "0px 0px 10px #000" }}>
+        <div id="print" style={{ width: "210mm", height: "297mm" }}>
+          <div>{xmlToJSX(xmlObject, true)}</div>
+        </div>
+      </div>
     </div>
   );
 }
